@@ -88,3 +88,11 @@ curl -X POST -H "Authorization: mocked_user_token" \
 -d '{"address": "456 Oak St", "num_rooms": 4, "price": 300000}' \
 http://localhost:5000/api/house
 ```
+
+## How to run the tests
+
+You can run the tests with
+
+```python
+python -m unittest test_app.py
+```
