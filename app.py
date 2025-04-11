@@ -144,14 +144,8 @@ def create_house():
 @token_required
 def delete_house(house_id):
     # TODO: Implement logic to delete a house from the database
-    return jsonify({"message": "Delete functionality not implemented yet"}), 501  # 501 Not Implemented
+    return jsonify({"message": "Delete functionality not implemented yet"}), 501 
 
-
-@app.route('/api/houses/search', methods=['GET'])
-@token_required
-def search_houses():
-    # TODO: Filter houses based on query parameters
-    return jsonify({"message": "Search not implemented"}), 501
 
 
 if __name__ == '__main__':
