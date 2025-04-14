@@ -1,8 +1,5 @@
-# Frontend Hiring Task - Flask Backend
 
 ## Overview
-
-This is a mock backend server for a frontend developer hiring task. It provides API endpoints demonstrating role-based access control (admin vs regular user) using a simple in-memory database.
 
 **Features**:
 
