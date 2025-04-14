@@ -193,6 +193,22 @@
             "description": "House not found"
           }
         }
+      },
+      "delete": {
+        "summary": "Remove specific house by ID",
+        "security": [{"api_key": []}],
+        "parameters": [
+          {
+            "name": "house_id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": { "description": "House removed" },
+          "404": { "description": "House not found" }
+        }
       }
     }
   },

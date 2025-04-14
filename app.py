@@ -1,9 +1,12 @@
 from flask import Flask, jsonify, request, abort
+from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 from functools import wraps
 from marshmallow import Schema, fields, ValidationError
 
 app = Flask(__name__)
+# Enable CORS for all routes and origins:
+CORS(app)
 
 # Marshmallow Schemas
 class UserSchema(Schema):
@@ -143,8 +146,16 @@ def create_house():
 @app.route('/api/house/<int:house_id>', methods=['DELETE'])
 @token_required
 def delete_house(house_id):
-    # TODO: Implement logic to delete a house from the database
-    return jsonify({"message": "Delete functionality not implemented yet"}), 501 
+    try:
+        house = houses_db.pop(house_id)
+        if not house:
+            abort(404)
+        return jsonify({"message": "House deleted successfully"}), 204
+    except KeyError:
+        abort(404)
+    except Exception as e:
+        # Log the exception (not implemented here)
+        return jsonify({"error": str(e)}), 500
 
 
 

@@ -56,3 +56,10 @@ class APITestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
         data = response.get_json()
         self.assertEqual(data['address'], new_house['address'])
+
+    def test_remove_house(self):
+        response = self.client.delete('/api/house/1', headers=self.headers_admin)
+        self.assertEqual(response.status_code, 204)
+        # Check if the house is actually deleted
+        response = self.client.get('/api/house/1', headers=self.headers_user)
+        self.assertEqual(response.status_code, 404)
