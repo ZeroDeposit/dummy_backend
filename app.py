@@ -1,9 +1,13 @@
 from flask import Flask, jsonify, request, abort
+from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 from functools import wraps
 from marshmallow import Schema, fields, ValidationError
 
 app = Flask(__name__)
+
+# Enable CORS for all routes and origins:
+CORS(app)
 
 # Marshmallow Schemas
 class UserSchema(Schema):
@@ -150,3 +154,4 @@ def delete_house(house_id):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
